@@ -9,7 +9,7 @@ QuickGenius is a simple password generator and **NOT** a password manager. It do
 
 1. Clone the repository:
 ```
-git clone https://github.com/yourusername/QuickGenius.git
+git clone https://github.com/asyncmagician/QuickGenius.git
 cd QuickGenius
 ```
 2. Install dependencies:
