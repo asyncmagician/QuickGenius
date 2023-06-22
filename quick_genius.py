@@ -61,5 +61,7 @@ if check_pwned(password):
 else:
     print(f"The password is safe.")
 
+entropy_status = "high" if entropy > 80 else ("medium" if entropy > 40 else "low")
+
 print(f"Your generated password is {password}")
-print(f"The password entropy equal to {entropy} bits")
+print(f"The password entropy equal to {entropy} bits, current is considered {entropy_status}")
