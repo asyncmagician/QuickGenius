@@ -29,3 +29,6 @@ git clone https://github.com/asyncmagician/QuickGenius.git
 8. Enter the filename (key) of the password or passphrase to decode.
 9. The password or passphrase will be decoded and displayed in color.
 10. The text file will be automatically deleted for security purposes.
+
+## Contributing
+QuickGenius is 100% open-source, and we welcome contributions from the community. If you find any issues or have feature suggestions, feel free to open an issue or submit a pull request on GitHub. The only requirement is that you need to sign your commits. 
