@@ -1,12 +1,13 @@
-# QuickGenius - Simple and Customizable Password Generator
+# QuickGenius - Simple and Customizable Credentials Generator
 
-Welcome to QuickGenius! This script helps you generate random passwords ou passphrase with ease. You can customize the length, character set, and more to create a strong and secure password/passphrase for your online accounts. It's 100% open-source. 
+Welcome to QuickGenius! This script helps you generate random passwords ou passphrase with ease. You can customize the length, character set, select the number of words in a passphrase and more to create a strong and secure passwords/passphrases for your online accounts. It's 100% open-source. 
 
 ## ⚠️ Important Note
 QuickGenius is a simple password generator and **NOT** a password manager. It store the generated password/passphrase locally and removes it after it's been decoded.
-🌍 Internet is required, it uses [HaveIbeenPwnd](https://haveibeenpwned.com/API/v2) and [DataMuse](https://haveibeenpwned.com/API/v2) APIs
 
-Please use a dedicated password manager, like [Passbolt](https://github.com/passbolt), to store and manage your passwords securely.
+🌍 Internet is required, has it uses [HaveIbeenPwnd](https://haveibeenpwned.com/API/v2) and [DataMuse](https://haveibeenpwned.com/API/v2) APIs
+
+Please use a dedicated password manager, like [Passbolt](https://github.com/passbolt), to generate, store and manage your passwords securely.
 
 ## Get Started
 
