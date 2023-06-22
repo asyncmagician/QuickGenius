@@ -27,23 +27,25 @@ def generate_password(length: int, with_special_chars =True, with_uppercase : bo
 
 valid_input = False
 while not valid_input:
-    length = int(input("Select the length of the desired password ~ "))
-    with_special_chars = input("Do we include special characters ? (Y/n)").lower() or "y"
-    with_uppercase = input("Do we include uppercases letters ? (Y/n)").lower() or "y"
-    with_lowercase = input("Do we include lowercases letters ? (Y/n)").lower() or "y"
-    with_digits = input("Do we include numbers ? (Y/n)").lower() or "y"
+    length = int(input("Select the length of the desired password (8-128) ~ "))
+    
+    if 8 <= length <= 128:
+        with_special_chars = input("Do we include special characters ? (Y/n)").lower() or "y"
+        with_uppercase = input("Do we include uppercases letters ? (Y/n)").lower() or "y"
+        with_lowercase = input("Do we include lowercases letters ? (Y/n)").lower() or "y"
+        with_digits = input("Do we include numbers ? (Y/n)").lower() or "y"
 
-    with_special_chars = True if with_special_chars == "y" else False
-    with_uppercase = True if with_uppercase == "y" else False
-    with_lowercase = True if with_lowercase == "y" else False
-    with_digits = True if with_digits == "y" else False
-
-    if with_special_chars or with_uppercase or with_lowercase or with_digits:
-        valid_input = True
+        with_special_chars = True if with_special_chars == "y" else False
+        with_uppercase = True if with_uppercase == "y" else False
+        with_lowercase = True if with_lowercase == "y" else False
+        with_digits = True if with_digits == "y" else False
+        
+        if with_special_chars or with_uppercase or with_lowercase or with_digits:
+            valid_input = True
+        else:
+            print("You must select at least one option. Please try again.")
     else:
-        print("You must select at least one option. Please try again.")
-
-password, entropy = generate_password(length, with_special_chars, with_uppercase, with_lowercase, with_digits)
+        print("The length of the password should be between 8 and 128. Please try again.")
 
 password, entropy = generate_password(length, with_special_chars, with_uppercase, with_lowercase, with_digits)
 
