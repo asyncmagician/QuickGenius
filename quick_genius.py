@@ -3,6 +3,7 @@ import random
 import math
 import hashlib
 import requests
+import base64
 
 def generate_passphrase(length: int):
     response = requests.get('https://api.datamuse.com/words?max=1000&ml=planet')
@@ -68,14 +69,19 @@ while not valid_length:
             password, entropy = generate_password(length, with_special_chars, with_uppercase, with_lowercase, with_digits)
             entropy_status = "high" if entropy > 80 else ("medium" if entropy > 40 else "low")
 
-            print(f"Your generated password is {password}")
+            password_encoded = base64.b64encode(password.encode()).decode()
+            print(f"Your encoded password is {password_encoded}")
             print(f"The password entropy equal to {entropy} bits, which is considered {entropy_status}")
+            print("Please use _decode.py to decode the password")
         elif ptype == "pa":
             passphrase, entropy = generate_passphrase(length)
             entropy_status = "high" if entropy > 80 else ("medium" if entropy > 40 else "low")
 
-            print(f"Your generated passphrase is {passphrase}")
+            passphrase_encoded = base64.b64encode(passphrase.encode()).decode()
+            print(f"Your encoded passphrase is {passphrase_encoded}")
+
             print(f"The passphrase entropy equal to {entropy} bits, which is considered {entropy_status}")
+            print("Please use _decode.py to decode the passphrase")
         valid_length = True
     else:
         print("The length of the password or the number of words in the passphrase should be between 4 and 128. Please try again.")
