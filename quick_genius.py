@@ -4,7 +4,10 @@ import math
 import hashlib
 import requests
 import base64
+import json
 
+json_id: int  = random.randint(1, 1000)
+filename: str = f'{str(json_id)}.txt'
 def generate_passphrase(length: int):
     response = requests.get('https://api.datamuse.com/words?max=1000&ml=planet')
     word_library = [item['word'] for item in response.json()]   
@@ -67,19 +70,24 @@ while not valid_length:
             with_digits = True if with_digits == "y" else False
 
             password, entropy = generate_password(length, with_special_chars, with_uppercase, with_lowercase, with_digits)
-            entropy_status = "high" if entropy > 80 else ("medium" if entropy > 40 else "low")
+            entropy_status = "\033[32mhigh\033[0m" if entropy > 80 else ("\033[33mmedium\033[0m" if entropy > 40 else "\033[31mlow\033[0m")
 
             password_encoded = base64.b64encode(password.encode()).decode()
-            print(f"Your encoded password is {password_encoded}")
+            with open(f'{str(json_id)}.txt', 'w') as file:
+                file.write(password_encoded)
+            filename = f'{str(json_id)}'
+            print(f"Your encoded password key is \033[31m{filename}\033[0m and it has been stored locally")
             print(f"The password entropy equal to {entropy} bits, which is considered {entropy_status}")
             print("Please use _decode.py to decode the password")
         elif ptype == "pa":
             passphrase, entropy = generate_passphrase(length)
-            entropy_status = "high" if entropy > 80 else ("medium" if entropy > 40 else "low")
+            entropy_status = "\033[32mhigh\033[0m" if entropy > 80 else ("\033[33mmedium\033[0m" if entropy > 40 else "\033[31mlow\033[0m")
 
             passphrase_encoded = base64.b64encode(passphrase.encode()).decode()
-            print(f"Your encoded passphrase is {passphrase_encoded}")
-
+            with open(f'{str(json_id)}.txt', 'w') as file:
+                file.write(passphrase_encoded)
+            filename = f'{str(json_id)}'
+            print(f"Your encoded passphrase key is \033[31m{filename}\033[0m and it has been stored locally")
             print(f"The passphrase entropy equal to {entropy} bits, which is considered {entropy_status}")
             print("Please use _decode.py to decode the passphrase")
         valid_length = True
